@@ -1,0 +1,11 @@
+node_modules/**
+.DS_Store
+*.log
+public/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.next
+dist
+package.json
+*.md
