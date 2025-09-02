@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { RichTextEditor } from "@/components/rich-text-editor/editor";
 
 export default function CourseCreationPage() {
     const form = useForm<CourseSchemaType>({
@@ -122,11 +123,12 @@ export default function CourseCreationPage() {
                                     <FormItem>
                                         <FormLabel>Description</FormLabel>
                                         <FormControl>
-                                            <Textarea
+                                            {/* <Textarea
                                                 className="min-h-[120px]"
                                                 placeholder="detail description"
                                                 {...field}
-                                            />
+                                            /> */}
+                                            <RichTextEditor field={field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
