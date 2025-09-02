@@ -90,7 +90,7 @@ export function NavUser() {
                             <DropdownMenuItem asChild>
                                 <Link href="/admin/dashboard">
                                     <IconDashboard />
-                                    Home
+                                    Dashboard
                                 </Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem asChild>
