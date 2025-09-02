@@ -76,6 +76,7 @@ model Course {
   smallDescription String
   slug             String       @unique
   fileKey          String
+  duration         Int
   price            Float
   level            CourseLevel  @default(BEGINNER)
   category         String
