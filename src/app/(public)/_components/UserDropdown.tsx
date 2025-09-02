@@ -11,10 +11,9 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { authClient } from "@/lib/auth-client";
+import { useSignOut } from "@/hooks/use-signout";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 
 interface UserDropdownProps {
     name: string;
@@ -24,20 +23,7 @@ interface UserDropdownProps {
 
 export function UserDropdown({ name, email, avatarUrl }: UserDropdownProps) {
     const router = useRouter();
-
-    async function signout() {
-        await authClient.signOut({
-            fetchOptions: {
-                onSuccess: () => {
-                    router.push("/");
-                    toast.success("Successfully signed out!");
-                },
-                onError: () => {
-                    toast.error("Failed to sign out.");
-                },
-            },
-        });
-    }
+    const handleSignout = useSignOut();
 
     return (
         <DropdownMenu>
@@ -77,7 +63,7 @@ export function UserDropdown({ name, email, avatarUrl }: UserDropdownProps) {
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={signout}>
+                <DropdownMenuItem onClick={handleSignout}>
                     <LogOutIcon size={16} className="opacity-60" aria-hidden="true" />
                     <span>Logout</span>
                 </DropdownMenuItem>
