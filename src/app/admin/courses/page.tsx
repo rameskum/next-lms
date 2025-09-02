@@ -1,9 +1,21 @@
+import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
 
 export default function CoursesPage() {
     return (
-        <div>
-            <h1>Hey how are you</h1>
-        </div>
+        <>
+            <div className="flex items-center justify-between">
+                <h1 className="text-2xl font-bold">Your Courses</h1>
+
+                <Link href="/admin/courses/create" className={buttonVariants()}>
+                    Create Course
+                </Link>
+            </div>
+
+            <div>
+                <h1>all courses here</h1>
+            </div>
+        </>
     );
 }
