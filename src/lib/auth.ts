@@ -1,9 +1,8 @@
-import "server-only";
-
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "@/lib/db";
 import { env } from "@/lib/env";
+import { admin } from "better-auth/plugins";
 
 export const auth = betterAuth({
     database: prismaAdapter(prisma, {
@@ -15,4 +14,5 @@ export const auth = betterAuth({
             clientSecret: env.GITHUB_CLIENT_SECRET,
         },
     },
+    plugins: [admin()],
 });
