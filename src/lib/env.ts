@@ -8,6 +8,14 @@ export const env = createEnv({
         DATABASE_URL: z.url(),
         GITHUB_CLIENT_ID: z.string().min(1),
         GITHUB_CLIENT_SECRET: z.string().min(1),
+        AWS_ACCESS_KEY_ID: z.string().min(1),
+        AWS_SECRET_ACCESS_KEY: z.string().min(1),
+        AWS_ENDPOINT_URL_S3: z.string().min(1),
+        AWS_ENDPOINT_URL_IAM: z.string().min(1),
+        AWS_REGION: z.string().min(1),
     },
-    experimental__runtimeEnv: {},
+    client: {
+        NEXT_PUBLIC_S3_BUCKET_NAME_IMAGES: z.string().min(1),
+    },
+    experimental__runtimeEnv: { NEXT_PUBLIC_S3_BUCKET_NAME_IMAGES: process.env.NEXT_PUBLIC_S3_BUCKET_NAME_IMAGES },
 });

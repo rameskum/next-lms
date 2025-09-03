@@ -14,6 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RichTextEditor } from "@/components/rich-text-editor/editor";
+import { Uploader } from "@/components/file-uploader/uploader";
 
 export default function CourseCreationPage() {
     const form = useForm<CourseSchemaType>({
@@ -123,11 +124,6 @@ export default function CourseCreationPage() {
                                     <FormItem>
                                         <FormLabel>Description</FormLabel>
                                         <FormControl>
-                                            {/* <Textarea
-                                                className="min-h-[120px]"
-                                                placeholder="detail description"
-                                                {...field}
-                                            /> */}
                                             <RichTextEditor field={field} />
                                         </FormControl>
                                         <FormMessage />
@@ -141,7 +137,7 @@ export default function CourseCreationPage() {
                                     <FormItem>
                                         <FormLabel>Thumbnail image</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="thumbnail url" {...field} />
+                                            <Uploader />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
