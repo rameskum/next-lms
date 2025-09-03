@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { CloudUploadIcon, ImageIcon, Loader2Icon, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Progress } from "@/components/ui/progress";
 
 export function RenderEmptyState({ isDragActive }: { isDragActive: boolean }) {
     return (
@@ -63,7 +64,7 @@ export function RenderUploadedState({
 export function RenderUploadingState({ progress, file }: { progress: number; file: File }) {
     return (
         <div className="flex flex-col items-center justify-center text-center">
-            <p>{progress}</p>
+            <Progress value={progress} />
             <p className="text-foreground mt-2 text-sm font-medium">Uploading...</p>
             <p className="text-muted-foreground mt-1 max-w-xs truncate text-xs">{file.name}</p>
         </div>
