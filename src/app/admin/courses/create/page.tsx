@@ -33,7 +33,8 @@ export default function CourseCreationPage() {
             smallDescription: "",
             slug: "",
             fileKey: "",
-
+            duration: 0,
+            price: 0,
             level: "BEGINNER",
             category: "Health & Fitness",
             status: "DRAFT",
@@ -224,7 +225,13 @@ export default function CourseCreationPage() {
                                         <FormItem>
                                             <FormLabel>Duration</FormLabel>
                                             <FormControl>
-                                                <Input type="number" placeholder="duration hours" {...field} />
+                                                <Input 
+                                                    type="number" 
+                                                    placeholder="duration hours" 
+                                                    {...field}
+                                                    value={field.value || ''}
+                                                    onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -238,7 +245,13 @@ export default function CourseCreationPage() {
                                         <FormItem>
                                             <FormLabel>Price ($)</FormLabel>
                                             <FormControl>
-                                                <Input type="number" placeholder="price" {...field} />
+                                                <Input 
+                                                    type="number" 
+                                                    placeholder="price" 
+                                                    {...field}
+                                                    value={field.value || ''}
+                                                    onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
