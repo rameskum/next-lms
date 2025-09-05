@@ -16,9 +16,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { PlusIcon } from "lucide-react";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
-import { tr } from "zod/v4/locales";
-import { createChapter } from "../actions";
 import { toast } from "sonner";
+import { createChapter } from "../actions";
 
 export default function NewChapterModal({ courseId }: { courseId: string }) {
     const [isOpen, setIsOpen] = useState(false);
