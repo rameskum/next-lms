@@ -1,3 +1,4 @@
+import { description } from "@/components/sidebar/chart-area-interactive";
 import z from "zod";
 
 export const courseLevels = ["BEGINNER", "INTERMEDIATE", "ADVANCED"] as const;
@@ -76,5 +77,15 @@ export const chapterSchema = z.object({
     courseId: z.cuid2(),
 });
 
+export const lessonSchema = z.object({
+    name: z.string().min(3),
+    courseId: z.cuid2(),
+    chapterId: z.cuid2(),
+    description: z.string().min(3).optional(),
+    thumbnailKey: z.string().min(3).optional(),
+    videoKey: z.string().min(3).optional(),
+});
+
 export type CourseSchemaType = z.infer<typeof courseSchema>;
 export type ChapterSchemaType = z.infer<typeof chapterSchema>;
+export type LessonSchemaType = z.infer<typeof lessonSchema>;

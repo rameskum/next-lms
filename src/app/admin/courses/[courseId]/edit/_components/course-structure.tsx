@@ -28,6 +28,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { reorderChapters, reorderLessons } from "../actions";
 import NewChapterModal from "./new-chapter-modal";
+import NewLessonModal from "./new-lesson-modal";
 
 interface CourseStructureProps {
     data: AdminCourseSingularType;
@@ -343,9 +344,7 @@ export default function CourseStructure({ data }: CourseStructureProps) {
                                                         ))}
                                                     </SortableContext>
                                                     <div className="p-2">
-                                                        <Button variant="outline" className="w-full">
-                                                            Create New Lesson
-                                                        </Button>
+                                                        <NewLessonModal chapterId={item.id} courseId={data.id} />
                                                     </div>
                                                 </div>
                                             </CollapsibleContent>
