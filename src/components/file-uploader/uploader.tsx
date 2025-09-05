@@ -7,6 +7,7 @@ import { createId } from "@paralleldrive/cuid2";
 import { FileRejection, useDropzone } from "react-dropzone";
 import { toast } from "sonner";
 import { RenderEmptyState, RenderErrorState, RenderUploadedState, RenderUploadingState } from "./render-state";
+import { constructImageUrl } from "@/hooks/construct-url";
 
 interface UploaderState {
     id: string | null;
@@ -26,6 +27,7 @@ interface UploaderProps {
 }
 
 export function Uploader({ value, onChange }: UploaderProps) {
+    const fileUrl = constructImageUrl(value || "");
     const [fileState, setFileState] = useState<UploaderState>({
         error: false,
         file: null,
@@ -35,6 +37,7 @@ export function Uploader({ value, onChange }: UploaderProps) {
         isDeleting: false,
         fileType: "image",
         key: value,
+        objectUrl: fileUrl,
     });
 
     async function uploadFile(file: File) {
