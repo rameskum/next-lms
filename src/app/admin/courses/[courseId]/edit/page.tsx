@@ -4,6 +4,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
 import EditCourseForm from "./_components/edit-course";
 import CourseStructure from "./_components/course-structure";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 type Params = Promise<{
     courseId: string;
@@ -15,9 +18,20 @@ export default async function EditCoursePage({ params }: { params: Params }) {
 
     return (
         <div>
-            <h1 className="mb-8 text-3xl font-bold">
-                Edit Course: <span className="text-primary underline">{data.title}</span>
-            </h1>
+            <div className="mb-8 flex items-center gap-x-4">
+                <Link
+                    href="/admin/courses"
+                    className={buttonVariants({
+                        variant: "outline",
+                        size: "icon",
+                    })}
+                >
+                    <ArrowLeft className="size-4" />
+                </Link>
+                <h1 className="text-3xl font-bold">
+                    Edit Course: <span className="text-primary underline">{data.title}</span>
+                </h1>
+            </div>
 
             <Tabs defaultValue="basic-info" className="w-full">
                 <TabsList className="grid w-full grid-cols-2">
