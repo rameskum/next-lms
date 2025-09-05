@@ -8,7 +8,7 @@ export async function adminGetCourse(id: string) {
 
     const data = await prisma.course.findUnique({
         where: {
-            id,
+            id: id,
         },
         select: {
             id: true,
@@ -22,6 +22,22 @@ export async function adminGetCourse(id: string) {
             slug: true,
             smallDescription: true,
             category: true,
+            chapter: {
+                select: {
+                    id: true,
+                    title: true,
+                    position: true,
+                    lesson: {
+                        select: {
+                            id: true,
+                            title: true,
+                            thumbnailKey: true,
+                            position: true,
+                            videoKey: true,
+                        },
+                    },
+                },
+            },
         },
     });
 
